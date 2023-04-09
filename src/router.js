@@ -1,10 +1,10 @@
-const TaskPost = require("./controller/taskPost");
-const TaskModel = require("./models/task");
+const ContactPost = require("./controller/contactPost");
+const ContactModel = require("./models/contact");
 const express = require("express");
 const router = express();
 
 router.get("/", (req, res) => {
-  const task = new TaskModel.TaskModel({
+  const contact = new ContactModel.ContactModel({
     name: "Lucas",
     surname: "Winicius",
     telephone: "+55(11)111111111",
@@ -12,12 +12,12 @@ router.get("/", (req, res) => {
     authorId: "D08623263894",
   });
 
-  task
+  contact
     .save()
-    .then((task) => res.status(201).json(task))
+    .then((contact) => res.status(201).json(contact))
     .catch((err) => res.send(500).json(err));
 });
 
-router.post("/task", TaskPost);
+router.post("/contacts", ContactPost);
 
 module.exports = router;

@@ -1,10 +1,10 @@
-const TaskModel = require("../models/task");
+const ContactModel = require("../models/contact");
 
 module.exports = class {
-  static async createTask(body) {
-    const task = new TaskModel(body);
-    let taskReturned = await task.save();
-    return taskReturned;
+  static async createContact(body) {
+    const contact = new ContactModel(body);
+    let contactReturned = await contact.save();
+    return contactReturned;
   }
 
   static HandleErrors(error) {
