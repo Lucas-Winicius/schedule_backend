@@ -2,7 +2,7 @@ const { model, Schema } = require("mongoose");
 
 const taskSchema = new Schema({
   name: { type: String, requred: true },
-  surname: { type: String },
+  surname: { type: String, default: "" },
   telephone: { type: String, unique: true },
   email: { type: String, unique: true },
   authorId: { type: String, required: true },
@@ -11,4 +11,4 @@ const taskSchema = new Schema({
 
 const TaskModel = model("Tasks", taskSchema);
 
-exports.TaskModel = TaskModel;
+module.exports = TaskModel;
