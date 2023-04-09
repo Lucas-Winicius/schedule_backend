@@ -17,11 +17,12 @@ module.exports = async (req, res) => {
   }
 
   const resObj = {
+    statusCode: 200,
     success: true,
     message:
       "Congratulations! Your request has been successfully processed. Now you can celebrate with a cup of coffee! ☕️",
     date: Date.now(),
-    contact,
+    data: contact,
   };
 
   res.status(201).json(resObj);

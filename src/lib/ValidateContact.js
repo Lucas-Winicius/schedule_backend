@@ -51,4 +51,18 @@ module.exports = class {
       };
     }
   }
+
+  static hasContact(contacts) {
+    if(contacts.length <= 0) {
+      throw {
+        statusCode: 200,
+        message: "This user doesn't have any saved contacts.",
+        secondaryMessage:
+        "Oops! Looks like the result went missing! Maybe it went out for a coffee or took a nap. Let's wait a bit and see if it comes back.",
+        date: Date.now(),
+        success: false,
+      };
+    }
+  }
+
 };

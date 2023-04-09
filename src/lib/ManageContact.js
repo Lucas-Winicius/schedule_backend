@@ -1,6 +1,11 @@
 const ContactModel = require("../models/contact");
 
 module.exports = class {
+  static async getContacts(filter) {
+    const contacts = await ContactModel.find(filter);
+    return contacts;
+  }
+
   static async createContact(body) {
     const contact = new ContactModel(body);
     let contactReturned = await contact.save();
