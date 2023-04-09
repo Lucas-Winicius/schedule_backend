@@ -10,11 +10,15 @@ const limiter = rateLimit({
   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: true, // Disable the `X-RateLimit-*` headers
-  message: (req, res) => res.status(429).json({ message: "Request limit reached for this IP, please try again in fifteen minutes :[" }),
+  message: {
+    message:
+      "Request limit reached for this IP, please try again in fifteen minutes :[",
+  }
 });
 
 app.use(limiter);
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 mongoose
