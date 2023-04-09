@@ -7,13 +7,15 @@ const app = express();
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: true, // Disable the `X-RateLimit-*` headers
   message: {
-    message:
-      "Request limit reached for this IP, please try again in fifteen minutes :[",
-  }
+    statusCode: 429,
+    message: `Request limit reached for this IP, please try again in fifteen minutes :[`,
+    secondaryMessage: `Sorry, but you have reached the maximum limit of allowed requests. You will need to wait a bit before trying again. Take this time to do some stretching and relaxation exercises. Who knows, you might come back stronger and faster than ever! 💪🏼😉`,
+    success: false,
+  },
 });
 
 app.use(limiter);
