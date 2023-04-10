@@ -83,7 +83,7 @@ This method will add the contact to the schedule.
 
 This method will edit the contact according to the information sent in the request body, **except** for the author's ID.
 <br/>
-**Parameters od body:**
+**Parameters on body:**
 
 - **`name` - optional parameter**
 - **`surname` - optional parameter**
@@ -97,7 +97,7 @@ This method will edit the contact according to the information sent in the reque
 
 This method will delete the contact according to the ID indicated in the URL parameter.
 <br/>
-**Parameters od body:**
+**Parameters on body:**
 
 - **`null` - This route does not have any parameters in the request body.**
 
