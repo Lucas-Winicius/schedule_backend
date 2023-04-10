@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
 
   try {
     ValidateContacts.containsAuthorId(req.body);
-    contacts = await ManageContact.getContact({ authorId: req.body.authorId });
+    contacts = await ManageContact.getContactByFilter({ authorId: req.body.authorId });
     ValidateContacts.hasContact(contacts);
   } catch (error) {
     const err = ManageContact.HandleErrors(error);
