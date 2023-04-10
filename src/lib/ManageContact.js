@@ -1,7 +1,13 @@
 const ContactModel = require("../models/contact");
 
 module.exports = class {
-  static async getContacts(filter) {
+
+  static async updateContact(id, contactOPTIONS) {
+    const contact = await ContactModel.findByIdAndUpdate(id, contactOPTIONS, { new: true, runValidators: true })
+    return contact
+  }
+
+  static async getContactByFilter(filter) {
     const contacts = await ContactModel.find(filter);
     return contacts;
   }
