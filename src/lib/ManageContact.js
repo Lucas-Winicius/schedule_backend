@@ -2,6 +2,11 @@ const ContactModel = require("../models/contact");
 
 module.exports = class {
 
+  static async deleteContact(id) {
+    const contact = await ContactModel.findByIdAndDelete(id, { new: true })
+    return contact
+  }
+
   static async updateContact(id, contactOPTIONS) {
     const contact = await ContactModel.findByIdAndUpdate(id, contactOPTIONS, { new: true, runValidators: true })
     return contact
